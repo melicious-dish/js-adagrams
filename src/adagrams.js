@@ -23,6 +23,19 @@ const Adagrams = {
 
     return letters;
   },
+
+  usesAvailableLetters(word, drawnLetters) {
+    const letters = word.split('');
+    const drawnCopy = drawnLetters.slice(0); // Create a copy of the drawn letters which we can modify
+
+    return letters.every((letter) => {
+      const index = drawnCopy.indexOf(letter);
+      if(index === -1) return false;
+
+      delete drawnCopy[index];
+      return true;
+    });
+  },
 };
 
 // Do not remove this line or your tests will break!
